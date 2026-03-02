@@ -1,7 +1,3 @@
-// build.js
-//
-// Production build script for dom-id.
-//
 // Outputs:
 //  - dist/dom-id.js       (ESM + sourcemap)
 //  - dist/dom-id.min.js   (ESM minified)
@@ -12,34 +8,47 @@
 import { build } from 'esbuild'
 import { rmSync, mkdirSync } from 'node:fs'
 
-rmSync('dist', { recursive: true, force: true })
-mkdirSync('dist')
+const SRC = 'src/dom-id.js'
+const OUT_DIR = 'dist'
+const TARGET = 'es2020'
 
-await build({
-  entryPoints: ['src/dom-id.js'],
-  outfile: 'dist/dom-id.js',
-  format: 'esm',
+const formats = {
+  esm: 'esm',
+  cjs: 'cjs'
+}
+
+rmSync(OUT_DIR, { recursive: true, force: true })
+mkdirSync(OUT_DIR)
+
+const baseConfig = {
+  entryPoints: [SRC],
   bundle: false,
-  sourcemap: true,
-  target: 'es2020'
-})
+  target: TARGET
+}
 
-await build({
-    entryPoints: ['src/dom-id.js'],
-  outfile: 'dist/dom-id.min.js',
-  format: 'esm',
-  bundle: false,
-  minify: true,
-  target: 'es2020'
-})
+const out = name => `${OUT_DIR}/${name}`
 
-await build({
-    entryPoints: ['src/dom-id.js'],
-  outfile: 'dist/dom-id.cjs',
-  format: 'cjs',
-  bundle: false,
-  sourcemap: true,
-  target: 'es2020'
-})
+const buildVariant = options =>
+  build({ ...baseConfig, ...options })
 
-console.log('✓ Built dist/')
+await Promise.all([
+  buildVariant({
+    outfile: out('dom-id.js'),
+    format: formats.esm,
+    sourcemap: true
+  }),
+
+  buildVariant({
+    outfile: out('dom-id.min.js'),
+    format: formats.esm,
+    minify: true
+  }),
+
+  buildVariant({
+    outfile: out('dom-id.cjs'),
+    format: formats.cjs,
+    sourcemap: true
+  })
+])
+
+console.log(`✓ Built ${OUT_DIR}/`)
