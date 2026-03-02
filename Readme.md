@@ -10,12 +10,12 @@
 
 `id-dom` is a small utility for grabbing DOM references safely **by `id`**, with predictable behavior:
 
-* ✅ **Typed getters** (`button('saveBtn')`, `input('name')`, etc.)
-* ✅ **Strict or optional** mode (`throw` vs `null`)
-* ✅ **Short optional alias** (`.opt`)
-* ✅ **Scopable** to a root (`document`, `ShadowRoot`, or an `Element`)
-* ✅ **Centralized error handling** (`onError`, optional `warn`)
-* ✅ **Zero deps**
+*  **Typed getters** (`button('saveBtn')`, `input('name')`, etc.)
+*  **Strict or optional** mode (`throw` vs `null`)
+*  **Short optional alias** (`.opt`)
+*  **Scopable** to a root (`document`, `ShadowRoot`, or an `Element`)
+*  **Centralized error handling** (`onError`, optional `warn`)
+*  **Zero deps**
 
 This is deliberately **not** a selector framework — it’s a tiny “ID-first” primitive for clean, safe DOM wiring.
 
