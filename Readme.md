@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/id-dom.svg)](https://www.npmjs.com/package/id-dom)
 [![npm downloads](https://img.shields.io/npm/dm/id-dom.svg)](https://www.npmjs.com/package/id-dom)
 [![GitHub stars](https://img.shields.io/github/stars/iWhatty/id-dom.svg?style=social)](https://github.com/iWhatty/id-dom)
-[![License](https://img.shields.io/github/license/iWhatty/id-dom.svg)](https://github.com/iWhatty/id-dom/LICENSE.md)
+[![License](https://img.shields.io/github/license/iWhatty/id-dom.svg)](https://github.com/iWhatty/id-dom/blob/main/LICENSE.md)
 
 
 **Deterministic DOM element getters by ID (typed, tiny, modern).**
